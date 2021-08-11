@@ -2490,6 +2490,7 @@ unparseable
 unpause
 Unregister
 unregistering
+unscoped
 untests
 untextured
 untimes

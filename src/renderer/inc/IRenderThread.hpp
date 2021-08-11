@@ -18,20 +18,18 @@ namespace Microsoft::Console::Render
     class IRenderThread
     {
     public:
-        virtual ~IRenderThread() = 0;
-        IRenderThread(const IRenderThread&) = default;
+        constexpr IRenderThread() = default;
+        virtual ~IRenderThread(){};
+
+        IRenderThread(const IRenderThread&) = delete;
+        IRenderThread& operator=(const IRenderThread&) = delete;
+
         IRenderThread(IRenderThread&&) = default;
-        IRenderThread& operator=(const IRenderThread&) = default;
         IRenderThread& operator=(IRenderThread&&) = default;
 
         virtual void NotifyPaint() = 0;
         virtual void EnablePainting() = 0;
         virtual void DisablePainting() = 0;
         virtual void WaitForPaintCompletionAndDisable(const DWORD dwTimeoutMs) = 0;
-
-    protected:
-        IRenderThread() = default;
     };
-
-    inline Microsoft::Console::Render::IRenderThread::~IRenderThread(){};
 }
