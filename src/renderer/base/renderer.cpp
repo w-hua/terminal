@@ -394,19 +394,6 @@ bool Renderer::_CheckViewportAndScroll()
 
     _viewport = Viewport::FromInclusive(srNewViewport);
 
-    {
-        const auto size = _viewport.Width();
-
-        // If the window size has shrunk by >= 32 cells
-        // we reallocate _clusterBuffer to shrink it.
-        if (base::ClampSub(_clusterBuffer.capacity(), size).RawValue() >= 32)
-        {
-            _clusterBuffer = {};
-        }
-
-        _clusterBuffer.reserve(size);
-    }
-
     COORD coordDelta;
     coordDelta.X = srOldViewport.Left - srNewViewport.Left;
     coordDelta.Y = srOldViewport.Top - srNewViewport.Top;
