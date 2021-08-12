@@ -32,7 +32,7 @@ namespace Microsoft::Console::Render
 
         // Provides the embedded text as a single character
         // This might replace the string with the replacement character if it doesn't fit as one wchar_t.
-        constexpr wchar_t Cluster::GetTextAsSingle() const noexcept
+        constexpr wchar_t GetTextAsSingle() const noexcept
         {
             if (_text.size() == 1)
             {
@@ -45,14 +45,14 @@ namespace Microsoft::Console::Render
         }
 
         // Provides the string of wchar_ts for this cluster.
-        constexpr const std::wstring_view& Cluster::GetText() const noexcept
+        constexpr const std::wstring_view& GetText() const noexcept
         {
             return _text;
         }
 
         // Gets the number of columns in the grid that this character should consume
         // visually when rendered onto a line.
-        const size_t Cluster::GetColumns() const noexcept
+        const size_t GetColumns() const noexcept
         {
             return _columns;
         }
